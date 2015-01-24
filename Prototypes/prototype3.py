@@ -16,40 +16,47 @@ improved_collect = False
 improved_upkeep = False
 
 
-def choose(val, req):
+def choose(val, val2, req):
     print("Whick robots would you like to use? (1, 2 , 3)")
-    choice = int(input(""))
-    rand = ((math.floor(random.random() * 100)) % val + 1)
+    choice = int(input("\n"))
+    choice2 = int(input("How many would you like to spend? min: " + str(val) + " max: " + str(val2) + "\n\n"))
+    if choice2 < val or choice2 > val2:
+        print("You can't use that amount!")
+        choose(val, val2, req)
+    rand = ((math.floor(random.random() * 100)) % choice2 + 1)
     if choice == 1:
-        if robots[1] - val > -1:
+        if robots[1] - choice2 > -1:
             robots[1] -= rand
             print("You lost " + str(rand) + " MK1 robots!")
         else:
             print("You don't have the resources!")
-            choose(val, req)
+            choose(val, val2, req)
     elif choice == 2:
         if req < 2:
             print("You can't use MK2s for this task")
-            choose(val, req)
-        elif robots[2] - val > -1:
+            choose(val, val2, req)
+        elif robots[2] - choice2 > -1:
             robots[2] -= rand
             print("You lost " + str(rand) + " MK2 robots!")
         else:
             print("You don't have the resources!")
-            choose(val, req)
+            choose(val, val2, req)
     elif choice == 3:
         if req < 3:
             print("You can't use MK3s for this task")
-            choose(val, req)
-        if robots[3] - val > -1:
+            choose(val, val2, req)
+        if robots[3] - choice2 > -1:
             robots[3] -= rand
             print("You lost " + str(rand) + " MK3 robots!")
         else:
             print("You don't have the resources!")
-            choose(val, req)
+            choose(val, val2, req)
     else:
         print("\nWhy you do dis?\n")
-        choose(val, req)
+        choose(val, val2, req)
+
+    print(str(choice2))
+    return choice2
 
 
 def rand_event():
@@ -94,8 +101,8 @@ def end_turn():
 def expand():
     global robots, oil, metal, components, actions, max_actions, expand_chance, improved_collect, improved_expand, improved_upkeep, expansion, fortification
     rand = random.random()
-    choose(50, 1)
-    if rand < expand_chance:
+    choice = choose(50, 300, 1)
+    if rand < (expand_chance + ((choice - 50) / 100)):
         expansion += 1
         print("You expanded!")
     else:
@@ -115,29 +122,35 @@ def collect():
 
     choice = int(input("\n"))
     if choice == 1:
-        choose(50, 3)
+        choice = choose(50, 250, 3)
         if improved_collect:
-            oil += 40
-            print("Gained 40 oil!")
+            to_add = 40 + math.floor((choice - 50) / 5)
+            oil += to_add
+            print("Gained " + str(to_add) + " oil!")
         else:
-            oil += 20
-            print("Gained 20 oil!")
+            to_add = 20 + math.floor((choice - 50) / 10)
+            oil += to_add
+            print("Gained " + str(to_add) + " oil!")
     elif choice == 2:
-        choose(50, 3)
+        choice = choose(50, 250, 3)
         if improved_collect:
-            metal += 20
-            print("Gained 20 metal!")
+            to_add = 20 + math.floor((choice - 50) / 5)
+            metal += to_add
+            print("Gained " + str(to_add) + " metal!")
         else:
-            metal += 10
-            print("Gained 10 metal!")
+            to_add = 10 + math.floor((choice - 50) / 10)
+            metal += to_add
+            print("Gained " + str(to_add) + " metal!")
     elif choice == 3:
-        choose(50, 3)
+        choice = choose(50, 250, 3)
         if improved_collect:
-            components += 20
-            print("Gained 20 components!")
+            to_add = 20 + math.floor((choice - 50) / 5)
+            components += to_add
+            print("Gained " + str(to_add) + " components!")
         else:
-            components += 10
-            print("Gained 10 components!")
+            to_add = 10 + math.floor((choice - 50) / 10)
+            components += to_add
+            print("Gained " + str(to_add) + " components!")
     elif choice == 4:
         printerface()
     else:
@@ -210,8 +223,8 @@ def improve():
 
 def fortify():
     global robots, oil, metal, components, actions, max_actions, expand_chance, improved_collect, improved_expand, improved_upkeep, expansion, fortification
-    choose(50, 2)
-    fortification += 1
+    choice = choose(50, 350, 2)
+    fortification += math.floor(choice / 100)
     print("Fortifications improved!")
     end_turn()
 
