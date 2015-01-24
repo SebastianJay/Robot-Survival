@@ -19,9 +19,27 @@ public class LabelManager : MonoBehaviour {
 	public UnityEngine.UI.Text power;
 	public UnityEngine.UI.Text weapon;
 	public UnityEngine.UI.Text defense;
+	
+	private Model info;
+	public void UpdateText()
+	{
+		oil.text = ""+info.oil;
+		metal.text = ""+info.metal;
+		components.text = ""+info.metal;
+
+		robo1.text = ""+info.robots1;
+		robo2.text = ""+info.robots2;
+		robo3.text = ""+info.robots3;
+
+		//we can have mappings to words here
+		power.text = ""+info.improvedCollect;
+		weapon.text = ""+info.improvedExpand;
+		defense.text = ""+info.improvedUpkeep;
+	}
 
 	// Use this for initialization
 	void Start () {	
+		info = GetComponent<Model> ();
 	}
 
 	

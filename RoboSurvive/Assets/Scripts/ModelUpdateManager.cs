@@ -18,11 +18,26 @@ public class ModelUpdateManager : MonoBehaviour {
 
 	public void ShiftCollect(int x)
 	{
+		//(optional) validate whether we have enough resources for this transaction
+
+		//update the state
+
+		//update labels
+		currentState.GetComponent<LabelManager> ().UpdateText ();
+		//update active/inactive of buttons
+		currentState.GetComponent<ButtonActiveManager> ().UpdateButtons ();
 	}
 	public void ShiftExpand(int x)
 	{
 	}
-	
+	public void ShiftImprove(int x)
+	{
+	}
+
+	public void ExecuteSimulation()
+	{
+		//mirror for controller's Run()
+	}
 
 	//methods for special tasks
 
