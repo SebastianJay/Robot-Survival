@@ -23,6 +23,7 @@ def choose(val, req):
     if choice == 1:
         if robots[1] - val > -1:
             robots[1] -= rand
+            print("You lost " + str(rand) + " MK1 robots!")
         else:
             print("You don't have the resources!")
             choose(val, req)
@@ -32,6 +33,7 @@ def choose(val, req):
             choose(val, req)
         elif robots[2] - val > -1:
             robots[2] -= rand
+            print("You lost " + str(rand) + " MK2 robots!")
         else:
             print("You don't have the resources!")
             choose(val, req)
@@ -41,6 +43,7 @@ def choose(val, req):
             choose(val, req)
         if robots[3] - val > -1:
             robots[3] -= rand
+            print("You lost " + str(rand) + " MK3 robots!")
         else:
             print("You don't have the resources!")
             choose(val, req)
