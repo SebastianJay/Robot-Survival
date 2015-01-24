@@ -107,11 +107,11 @@ def collect():
     if choice == 1:
         choose(50)
         if improved_collect:
+            oil += 40
+            print("Gained 40 oil!")
+        else:
             oil += 20
             print("Gained 20 oil!")
-        else:
-            oil += 10
-            print("Gained 10 oil!")
     elif choice == 2:
         choose(50)
         if improved_collect:
