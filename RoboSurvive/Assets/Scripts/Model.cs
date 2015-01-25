@@ -21,12 +21,13 @@ public class Model : UnityEngine.MonoBehaviour {
 	// game state 
 	public int expansionLevel=0;
 	public int fortificationLevel=0;
+	public int hostility=0;
 
 	// upgrade levels
 	public float expandChance=75;
+	public int improvedUpkeep=0;
 	public int improvedExpand=0;
 	public int improvedCollect=0;
-	public int improvedUpkeep=0;
 	public int armor=0;
 	public int weapons=0;
 	public int firewall=0;
@@ -58,11 +59,17 @@ public class Model : UnityEngine.MonoBehaviour {
 		m.components = components;
 		m.expansionLevel = expansionLevel;
 		m.fortificationLevel = fortificationLevel;
+		m.hostility = hostility;
+
+		m.armor = armor;
+		m.weapons = weapons;
+		m.firewall = firewall;
+		m.derricks = derricks;
+		m.mines = mines;
+		m.production = production;
 
 		m.expandChance = expandChance;
-		m.improvedExpand = improvedExpand;
-		m.improvedCollect = improvedCollect;
-		m.improvedUpkeep = improvedUpkeep;
+
 		return m;
 	}
 }
