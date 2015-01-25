@@ -10,30 +10,46 @@ public class ModelUpdateManager : MonoBehaviour {
 	public static GameObject currentState;
 
 	private Model info;
+
 	//fixed cost stuff
-	public void Convert12()
+	public void Convert12(bool b)
 	{
-		
+		info.robots1 -= 100 * BoolToSign(b);
+		info.metal -= 20 * BoolToSign(b);
+		info.robots2 += 250 * BoolToSign(b);
+		PostUpdate ();
 	}
-	public void Convert23()
+	public void Convert23(bool b)
 	{
-
-	}
-
-	public void ImproveUpkeep()
-	{
-		//update labels
-		currentState.GetComponent<LabelManager> ().UpdateText ();
-		//update active/inactive of buttons
-		currentState.GetComponent<ButtonActiveManager> ().UpdateButtons ();
+		info.robots1 -= 100 * BoolToSign(b);
+		info.metal -= 30 * BoolToSign(b);
+		info.robots2 += 250 * BoolToSign(b);
+		PostUpdate ();
 	}
 
-	public void ImproveCollection()
+	public void ImproveUpkeep(bool b)
 	{
+		info.robots1 -= 100 * BoolToSign(b);
+		info.components -= 50 * BoolToSign(b);
+		info.oil -= 25 * BoolToSign(b);
+		info.improvedUpkeep += 1 * BoolToSign(b);
+		PostUpdate ();
 	}
 
-	public void ImproveExpansion()
+	public void ImproveCollection(bool b)
 	{
+		info.robots1 -= 100 * BoolToSign(b);
+		info.components -= 30 * BoolToSign(b);
+		info.improvedCollect += 1 * BoolToSign(b);
+		PostUpdate ();
+	}
+
+	public void ImproveExpansion(bool b)
+	{
+		info.robots1 -= 100 * BoolToSign(b);
+		info.components -= 20 * BoolToSign(b);
+		info.improvedExpand += 1 * BoolToSign(b);
+		PostUpdate ();
 	}
 
 
@@ -45,7 +61,7 @@ public class ModelUpdateManager : MonoBehaviour {
 	 */
 	public void ShiftCollect(int x)
 	{
-		//(optional) validate whether we have enough resources for this transaction
+		//validate whether we have enough resources for this transaction
 
 		int sign;
 		if (x % 2 == 0)
@@ -54,12 +70,16 @@ public class ModelUpdateManager : MonoBehaviour {
 			sign = 1;
 		int type = x >> 1;
 		Debug.Log (sign + " " + type);
+
 		//update the state
-				
-		//update labels
-		currentState.GetComponent<LabelManager> ().UpdateText ();
-		//update active/inactive of buttons
-		currentState.GetComponent<ButtonActiveManager> ().UpdateButtons ();
+		if (type == 1)
+				info.robots1 -= 50 * sign;
+		else if (type == 2)
+				info.robots2 -= 50 * sign;
+		else
+				info.robots3 -= 50 * sign;
+			
+		PostUpdate();
 	}
 
 	//
@@ -73,6 +93,13 @@ public class ModelUpdateManager : MonoBehaviour {
 		int type = x >> 1;
 		Debug.Log (sign + " " + type);
 
+		if (type == 1)
+			info.robots1 -= 50 * sign;
+		else if (type == 2)
+			info.robots2 -= 50 * sign;
+		else
+			info.robots3 -= 50 * sign;
+		PostUpdate ();
 	}
 
 	//
@@ -86,6 +113,26 @@ public class ModelUpdateManager : MonoBehaviour {
 		int type = x >> 1;
 		Debug.Log (sign + " " + type);
 
+		if (type == 1)
+			info.robots1 -= 50 * sign;
+		else if (type == 2)
+			info.robots2 -= 50 * sign;
+		else
+			info.robots3 -= 50 * sign;
+		PostUpdate ();
+	}
+
+	private void PostUpdate()
+	{
+		//update labels
+		currentState.GetComponent<LabelManager> ().UpdateText ();
+		//update active/inactive of buttons
+		currentState.GetComponent<ButtonActiveManager> ().UpdateButtons ();
+	}
+
+	private int BoolToSign(bool b)
+	{
+		return b ? 1 : -1;
 	}
 
 	public void ExecuteSimulation()

@@ -35,12 +35,13 @@ public class ButtonActiveManager : MonoBehaviour {
 		improveExpansion.interactable = info.robots1 >= 100 && info.components >= 20;
 		convert12.interactable = info.robots1 >= 100 && info.metal >= 20;
 		convert23.interactable = info.robots2 >= 100 && info.metal >= 30;
+		/*
 		improveUpkeep.isOn = false;
 		improveCollection.isOn = false;
 		improveExpansion.isOn = false;
 		convert12.isOn = false;
 		convert23.isOn = false;
-
+		*/
 		collectUp1.interactable = info.robots1 >= 50;
 		collectUp2.interactable = info.robots2 >= 50;
 		collectUp3.interactable = info.robots3 >= 50;
@@ -53,6 +54,7 @@ public class ButtonActiveManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		info = GetComponent<Model> ();
+		UpdateButtons ();
 	}
 	
 	// Update is called once per frame

@@ -25,7 +25,7 @@ public class LabelManager : MonoBehaviour {
 	{
 		oil.text = ""+info.oil;
 		metal.text = ""+info.metal;
-		components.text = ""+info.metal;
+		components.text = ""+info.components;
 
 		robo1.text = ""+info.robots1;
 		robo2.text = ""+info.robots2;
@@ -40,6 +40,7 @@ public class LabelManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {	
 		info = GetComponent<Model> ();
+		UpdateText ();
 	}
 
 	

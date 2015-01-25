@@ -15,8 +15,8 @@ public class Model : UnityEngine.MonoBehaviour {
 	// resources
 	public int electricity=0;
 	public int oil=50;
-	public int metal=0;
-	public int components=0;
+	public int metal=10;
+	public int components=10;
 
 	// game state 
 	public int expansionLevel=0;

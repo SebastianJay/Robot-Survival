@@ -12,13 +12,6 @@ public class Controller : MonoBehaviour {
         expand = this.GetComponent<Expansion>();
         upkeep = this.GetComponent<Upkeep>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        if(Input.anyKeyDown) {
-            Run();
-        }
-	}
 
     public void Run()
     {
