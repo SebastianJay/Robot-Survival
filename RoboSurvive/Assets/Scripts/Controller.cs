@@ -20,11 +20,6 @@ public class Controller : MonoBehaviour {
         }
 	}
 
-    private void RandomEvents()
-    {
-
-    }
-
     public void Run()
     {
         expand.Run();
