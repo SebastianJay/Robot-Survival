@@ -19,8 +19,8 @@ public class Upkeep : MonoBehaviour {
 
     public void Run()
     {
-        model.oil -= oilPerMk1 * model.robots1 + 
-				oilPerMk2 * model.robots2 + 
+        model.oil -= oilPerMk1 * model.robots1 - 
+				oilPerMk2 * model.robots2 - 
 				oilPerMk3 * model.robots3;
     }
 }
