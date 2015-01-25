@@ -40,6 +40,7 @@ public class LabelManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {	
 		info = GetComponent<Model> ();
+		UpdateText ();
 	}
 
 	
