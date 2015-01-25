@@ -23,7 +23,7 @@ public class Model : UnityEngine.MonoBehaviour {
 	public int fortificationLevel=0;
 
 	// upgrade levels
-	public float expandChart=0.5f;
+	public float expandChance=50;
 	public int improvedExpand=0;
 	public int improvedCollect=0;
 	public int improvedUpkeep=0;
@@ -35,6 +35,9 @@ public class Model : UnityEngine.MonoBehaviour {
 	public int robots1Fortify=0;
 	public int robots2Fortify=0;
 	public int robots1Expand=0;
+	public bool oneToTwo=false;
+	public bool twoToThree=false;
+	
 
 	public Model clone()
 	{
@@ -50,7 +53,7 @@ public class Model : UnityEngine.MonoBehaviour {
 		m.expansionLevel = expansionLevel;
 		m.fortificationLevel = fortificationLevel;
 
-		m.expandChart = expandChart;
+		m.expandChance = expandChance;
 		m.improvedExpand = improvedExpand;
 		m.improvedCollect = improvedCollect;
 		m.improvedUpkeep = improvedUpkeep;
