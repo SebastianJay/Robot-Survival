@@ -8,7 +8,7 @@ using System.Collections;
  */
 public class Model : UnityEngine.MonoBehaviour {
 	// robot count
-	public int robots1=10;	//the highest tier
+	public int robots1=500;	//the highest tier
 	public int robots2=0;	//next tier
 	public int robots3=0;	
 
@@ -18,11 +18,11 @@ public class Model : UnityEngine.MonoBehaviour {
 	public int metal=0;
 	public int components=0;
 
-	// game state
-	public int expansion=0;
-	public int fortification=0;
+	// game state 
+	public int expansionLevel=0;
+	public int fortificationLevel=0;
 
-	// upgradeable metrics
+	// upgrade levels
 	public float expandChart=0.5f;
 	public int improvedExpand=0;
 	public int improvedCollect=0;
