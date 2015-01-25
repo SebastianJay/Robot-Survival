@@ -10,30 +10,46 @@ public class ModelUpdateManager : MonoBehaviour {
 	public static GameObject currentState;
 
 	private Model info;
+
 	//fixed cost stuff
-	public void Convert12()
+	public void Convert12(bool b)
 	{
-		
+		info.robots1 -= 100;
+		info.metal -= 20;
+		info.robots2 += 250;
+		PostUpdate ();
 	}
-	public void Convert23()
+	public void Convert23(bool b)
 	{
-
-	}
-
-	public void ImproveUpkeep()
-	{
-		//update labels
-		currentState.GetComponent<LabelManager> ().UpdateText ();
-		//update active/inactive of buttons
-		currentState.GetComponent<ButtonActiveManager> ().UpdateButtons ();
+		info.robots1 -= 100;
+		info.metal -= 30;
+		info.robots2 += 250;
+		PostUpdate ();
 	}
 
-	public void ImproveCollection()
+	public void ImproveUpkeep(bool b)
 	{
+		info.robots1 -= 100;
+		info.components -= 50;
+		info.oil -= 25;
+		info.improvedUpkeep++;
+		PostUpdate ();
 	}
 
-	public void ImproveExpansion()
+	public void ImproveCollection(bool b)
 	{
+		info.robots1 -= 100;
+		info.components -= 30;
+		info.improvedCollect++;
+		PostUpdate ();
+	}
+
+	public void ImproveExpansion(bool b)
+	{
+		info.robots1 -= 100;
+		info.components -= 20;
+		info.improvedExpand++;
+		PostUpdate ();
 	}
 
 
@@ -54,12 +70,10 @@ public class ModelUpdateManager : MonoBehaviour {
 			sign = 1;
 		int type = x >> 1;
 		Debug.Log (sign + " " + type);
+
 		//update the state
-				
-		//update labels
-		currentState.GetComponent<LabelManager> ().UpdateText ();
-		//update active/inactive of buttons
-		currentState.GetComponent<ButtonActiveManager> ().UpdateButtons ();
+		
+		PostUpdate();
 	}
 
 	//
@@ -72,7 +86,7 @@ public class ModelUpdateManager : MonoBehaviour {
 			sign = 1;
 		int type = x >> 1;
 		Debug.Log (sign + " " + type);
-
+		PostUpdate ();
 	}
 
 	//
@@ -85,7 +99,20 @@ public class ModelUpdateManager : MonoBehaviour {
 			sign = 1;
 		int type = x >> 1;
 		Debug.Log (sign + " " + type);
+		PostUpdate ();
+	}
 
+	private void PostUpdate()
+	{
+		//update labels
+		currentState.GetComponent<LabelManager> ().UpdateText ();
+		//update active/inactive of buttons
+		currentState.GetComponent<ButtonActiveManager> ().UpdateButtons ();
+	}
+
+	private int BoolToSign(bool b)
+	{
+		return b ? 1 : -1;
 	}
 
 	public void ExecuteSimulation()
@@ -99,6 +126,7 @@ public class ModelUpdateManager : MonoBehaviour {
 	void Start () {
 		currentState = GameObject.FindGameObjectWithTag ("Model");
 		info = currentState.GetComponent<Model> ();
+		PostUpdate();
 	}
 	
 	// Update is called once per frame
