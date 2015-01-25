@@ -7,48 +7,49 @@ using System.Collections;
  */
 public class ModelUpdateManager : MonoBehaviour {
 
-	public static GameObject currentState;
+	public static GameObject modelObj;
 
-	private Model info;
+	public Model currentInfo;
+	public Model mutatedInfo;
 
 	//fixed cost stuff
 	public void Convert12(bool b)
 	{
-		info.robots1 -= 100 * BoolToSign(b);
-		info.metal -= 20 * BoolToSign(b);
-		info.robots2 += 250 * BoolToSign(b);
+		mutatedInfo.robots1 -= 100 * BoolToSign(b);
+		mutatedInfo.metal -= 20 * BoolToSign(b);
+		mutatedInfo.robots2 += 250 * BoolToSign(b);
 		PostUpdate ();
 	}
 	public void Convert23(bool b)
 	{
-		info.robots1 -= 100 * BoolToSign(b);
-		info.metal -= 30 * BoolToSign(b);
-		info.robots2 += 250 * BoolToSign(b);
+		mutatedInfo.robots1 -= 100 * BoolToSign(b);
+		mutatedInfo.metal -= 30 * BoolToSign(b);
+		mutatedInfo.robots2 += 250 * BoolToSign(b);
 		PostUpdate ();
 	}
 
 	public void ImproveUpkeep(bool b)
 	{
-		info.robots1 -= 100 * BoolToSign(b);
-		info.components -= 50 * BoolToSign(b);
-		info.oil -= 25 * BoolToSign(b);
-		info.improvedUpkeep += 1 * BoolToSign(b);
+		mutatedInfo.robots1 -= 100 * BoolToSign(b);
+		mutatedInfo.components -= 50 * BoolToSign(b);
+		mutatedInfo.oil -= 25 * BoolToSign(b);
+		mutatedInfo.improvedUpkeep += 1 * BoolToSign(b);
 		PostUpdate ();
 	}
 
 	public void ImproveCollection(bool b)
 	{
-		info.robots1 -= 100 * BoolToSign(b);
-		info.components -= 30 * BoolToSign(b);
-		info.improvedCollect += 1 * BoolToSign(b);
+		mutatedInfo.robots1 -= 100 * BoolToSign(b);
+		mutatedInfo.components -= 30 * BoolToSign(b);
+		mutatedInfo.improvedCollect += 1 * BoolToSign(b);
 		PostUpdate ();
 	}
 
 	public void ImproveExpansion(bool b)
 	{
-		info.robots1 -= 100 * BoolToSign(b);
-		info.components -= 20 * BoolToSign(b);
-		info.improvedExpand += 1 * BoolToSign(b);
+		mutatedInfo.robots1 -= 100 * BoolToSign(b);
+		mutatedInfo.components -= 20 * BoolToSign(b);
+		mutatedInfo.improvedExpand += 1 * BoolToSign(b);
 		PostUpdate ();
 	}
 
@@ -73,11 +74,20 @@ public class ModelUpdateManager : MonoBehaviour {
 
 		//update the state
 		if (type == 1)
-				info.robots1 -= 50 * sign;
+		{
+			mutatedInfo.robots1 -= 50 * sign;
+			mutatedInfo.robots1Collect += 50 * sign;
+		}
 		else if (type == 2)
-				info.robots2 -= 50 * sign;
+		{
+			mutatedInfo.robots2 -= 50 * sign;
+			mutatedInfo.robots2Collect += 50 * sign;
+		}
 		else
-				info.robots3 -= 50 * sign;
+		{
+			mutatedInfo.robots3 -= 50 * sign;
+			mutatedInfo.robots3Collect += 50 * sign;
+		}
 			
 		PostUpdate();
 	}
@@ -94,11 +104,10 @@ public class ModelUpdateManager : MonoBehaviour {
 		Debug.Log (sign + " " + type);
 
 		if (type == 1)
-			info.robots1 -= 50 * sign;
-		else if (type == 2)
-			info.robots2 -= 50 * sign;
-		else
-			info.robots3 -= 50 * sign;
+		{
+			mutatedInfo.robots1 -= 50 * sign;
+			mutatedInfo.robots1Expand += 50 * sign;
+		}
 		PostUpdate ();
 	}
 
@@ -114,20 +123,24 @@ public class ModelUpdateManager : MonoBehaviour {
 		Debug.Log (sign + " " + type);
 
 		if (type == 1)
-			info.robots1 -= 50 * sign;
+		{
+			mutatedInfo.robots1 -= 50 * sign;
+			mutatedInfo.robots1Fortify += 50 * sign;
+		}
 		else if (type == 2)
-			info.robots2 -= 50 * sign;
-		else
-			info.robots3 -= 50 * sign;
+		{
+			mutatedInfo.robots2 -= 50 * sign;
+			mutatedInfo.robots2Fortify += 50 * sign;
+		}
 		PostUpdate ();
 	}
 
 	private void PostUpdate()
 	{
 		//update labels
-		currentState.GetComponent<LabelManager> ().UpdateText ();
+		modelObj.GetComponent<LabelManager> ().UpdateText (currentInfo, mutatedInfo);
 		//update active/inactive of buttons
-		currentState.GetComponent<ButtonActiveManager> ().UpdateButtons ();
+		modelObj.GetComponent<ButtonActiveManager> ().UpdateButtons (currentInfo, mutatedInfo);
 	}
 
 	private int BoolToSign(bool b)
@@ -144,8 +157,9 @@ public class ModelUpdateManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		currentState = GameObject.FindGameObjectWithTag ("Model");
-		info = currentState.GetComponent<Model> ();
+		modelObj = GameObject.FindGameObjectWithTag ("Model");
+		currentInfo = modelObj.GetComponent<Model> ();
+		mutatedInfo = currentInfo.clone ();
 	}
 	
 	// Update is called once per frame
