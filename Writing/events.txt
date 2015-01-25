@@ -1,0 +1,53 @@
+Probes sent over a nearby lake suggest a possible oil field. Land scouts came across an old military encampment.
+
+In the course of scouting the camp, scout robots find usable armor. 
+
+The initial probe's report of an oil site proved correct; The additional oil will allow for a larger cadre of robots.
+
+-----
+
+Among your scouting reports are a derelict city and an abandoned mine.
+
+Your group arrives on a well-preserved building. The sign over the door says "Armory". Fortified in anticipation of conflict, this building withstood the neglect which atrophied the surrounding town.
+
+The abundance of metals suggest that the mine was abandoned by its owners due to conflict, not diminishing returns.
+
+-----
+
+The abundance of technology suggests that this town was an advanced manufacturing site. Among the better-preserved buildings are a production yard and a data center.
+
+Scans of the intact servers in the data center reveal large quantities of security software, some of which are compatible with the hardware assimilated by your systems. Integrating these security components will improve firewall capabilities.
+
+Although the robotics in the production yard have been looted for the gold in their circuitry, the scrappers ignored the components in the warehouse. These parts will be repurposed to great effect.
+
+-----
+
+Scout probes find a large hydroelectric dam which appears to have sustained only minor damage.
+
+-----
+
+Scouts report a fortress and an oil field.
+
+The fortresses QQQQQ, but it requires units of greater ability (MK2 or higher) to operate.
+
+The oil deposits found by the probes exist, but are deeper than anticipated. Utilizing these mines will require at least MK2-class units.
+
+-----
+
+Probes reveal a firearms manufacturing center and a large strip-mine
+
+The firearms at the center offer improved offensive capacity, but have been shielded behind a safe. Obtaining and using these weapons will require MK2-class strength.
+
+This mines has large deposits of metal encased in hard rock. Extracting the metals will require MK2 units to drill the rocks.
+
+-----
+
+Scouts report the ruins of a defence research park. The infomatics and production sectors appear intact.
+
+The infomatics sector features partially damaged databanks of strong firewalls. Extracting this information from the corrupted servers will require MK2-class dexterity and information-handling.
+
+The production sector itself lacks any resources, but several crates featuring unprocessed scraps. The components from these scraps can be repurposed, but only after being separated using the strength and dexterity of more advanced (MK2) units.
+
+-----
+
+Units in the area report a massive fusion reactor with a damaged containment unit. Fixing the reator will provide massive power gains, but handling plasma-resistant alloys requires the most advanced manufacturing systems of MK1 units. 
