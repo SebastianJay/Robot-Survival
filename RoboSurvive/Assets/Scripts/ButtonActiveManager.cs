@@ -30,11 +30,11 @@ public class ButtonActiveManager : MonoBehaviour {
 	
 	public void UpdateButtons(Model currentInfo, Model mutatedInfo) {
 		//set buttons enabled/disabled based on resource counts
-		improveUpkeep.interactable = (currentInfo.robots1 >= 100 && currentInfo.components >= 50 && currentInfo.oil >= 25) || improveUpkeep.isOn;
-		improveCollection.interactable = (currentInfo.robots1 >= 100 && currentInfo.components >= 30) || improveCollection.isOn;
-		improveExpansion.interactable = (currentInfo.robots1 >= 100 && currentInfo.components >= 20) || improveExpansion.isOn;
-		convert12.interactable = (currentInfo.robots1 >= 100 && currentInfo.metal >= 20) || convert12.isOn;
-		convert23.interactable = (currentInfo.robots2 >= 100 && currentInfo.metal >= 30) || convert23.isOn;
+		improveUpkeep.interactable = (currentInfo.robots1 >= 100 && currentInfo.components >= 50 && currentInfo.oil >= 25 && mutatedInfo.electricity >= 100) || improveUpkeep.isOn;
+		improveCollection.interactable = (currentInfo.robots1 >= 100 && currentInfo.components >= 30 && mutatedInfo.electricity >= 100) || improveCollection.isOn;
+		improveExpansion.interactable = (currentInfo.robots1 >= 100 && currentInfo.components >= 20 && mutatedInfo.electricity >= 100) || improveExpansion.isOn;
+		convert12.interactable = (currentInfo.robots1 >= 100 && currentInfo.metal >= 20 && mutatedInfo.electricity >= 100) || convert12.isOn;
+		convert23.interactable = (currentInfo.robots2 >= 100 && currentInfo.metal >= 30 && mutatedInfo.electricity >= 100) || convert23.isOn;
 		/*
 		improveUpkeep.isOn = false;
 		improveCollection.isOn = false;
@@ -42,13 +42,21 @@ public class ButtonActiveManager : MonoBehaviour {
 		convert12.isOn = false;
 		convert23.isOn = false;
 		*/
-		collectUp1.interactable = currentInfo.robots1 >= 50;
-//		collectDown1.interactable = 
-		collectUp2.interactable = currentInfo.robots2 >= 50;
-		collectUp3.interactable = currentInfo.robots3 >= 50;
-		fortifyUp1.interactable = currentInfo.robots1 >= 50;
-		fortifyUp2.interactable = currentInfo.robots2 >= 50;
-		expandUp1.interactable = currentInfo.robots1 >= 50;
+		collectUp1.interactable = currentInfo.robots1 >= 50 && mutatedInfo.electricity >= 50;
+		collectDown1.interactable = mutatedInfo.robots1 - currentInfo.robots1 < 0 && mutatedInfo.robots1Collect > 0;
+		collectUp2.interactable = currentInfo.robots2 >= 50 && mutatedInfo.electricity >= 50;
+		collectDown2.interactable = mutatedInfo.robots2 - currentInfo.robots2 < 0 && mutatedInfo.robots2Collect > 0;
+		collectUp3.interactable = currentInfo.robots3 >= 50 && mutatedInfo.electricity >= 50;
+		collectDown3.interactable = mutatedInfo.robots3 - currentInfo.robots3 < 0 && mutatedInfo.robots3Collect > 0;
+
+		fortifyUp1.interactable = currentInfo.robots1 >= 50 && mutatedInfo.electricity >= 50;
+		fortifyDown1.interactable = mutatedInfo.robots1 - currentInfo.robots1 < 0 && mutatedInfo.robots1Fortify > 0;
+		fortifyUp2.interactable = currentInfo.robots2 >= 50 && mutatedInfo.electricity >= 50;
+		fortifyDown2.interactable = mutatedInfo.robots2 - currentInfo.robots2 < 0 && mutatedInfo.robots2Fortify > 0;
+
+		expandUp1.interactable = currentInfo.robots1 >= 50 && mutatedInfo.electricity >= 50;
+		expandDown1.interactable = mutatedInfo.robots1 - currentInfo.robots1 < 0 && mutatedInfo.robots1Expand > 0;
+
 	}
 
 	private Model info;

@@ -18,13 +18,15 @@ public class ModelUpdateManager : MonoBehaviour {
 		mutatedInfo.robots1 -= 100 * BoolToSign(b);
 		mutatedInfo.metal -= 20 * BoolToSign(b);
 		mutatedInfo.robots2 += 250 * BoolToSign(b);
+		mutatedInfo.electricity -= 100 * BoolToSign(b);
 		PostUpdate ();
 	}
 	public void Convert23(bool b)
 	{
-		mutatedInfo.robots1 -= 100 * BoolToSign(b);
+		mutatedInfo.robots2 -= 100 * BoolToSign(b);
 		mutatedInfo.metal -= 30 * BoolToSign(b);
-		mutatedInfo.robots2 += 250 * BoolToSign(b);
+		mutatedInfo.robots3 += 250 * BoolToSign(b);
+		mutatedInfo.electricity -= 100 * BoolToSign(b);
 		PostUpdate ();
 	}
 
@@ -34,6 +36,7 @@ public class ModelUpdateManager : MonoBehaviour {
 		mutatedInfo.components -= 50 * BoolToSign(b);
 		mutatedInfo.oil -= 25 * BoolToSign(b);
 		mutatedInfo.improvedUpkeep += 1 * BoolToSign(b);
+		mutatedInfo.electricity -= 100 * BoolToSign(b);
 		PostUpdate ();
 	}
 
@@ -42,6 +45,7 @@ public class ModelUpdateManager : MonoBehaviour {
 		mutatedInfo.robots1 -= 100 * BoolToSign(b);
 		mutatedInfo.components -= 30 * BoolToSign(b);
 		mutatedInfo.improvedCollect += 1 * BoolToSign(b);
+		mutatedInfo.electricity -= 100 * BoolToSign(b);
 		PostUpdate ();
 	}
 
@@ -50,6 +54,7 @@ public class ModelUpdateManager : MonoBehaviour {
 		mutatedInfo.robots1 -= 100 * BoolToSign(b);
 		mutatedInfo.components -= 20 * BoolToSign(b);
 		mutatedInfo.improvedExpand += 1 * BoolToSign(b);
+		mutatedInfo.electricity -= 100 * BoolToSign(b);
 		PostUpdate ();
 	}
 
@@ -77,16 +82,20 @@ public class ModelUpdateManager : MonoBehaviour {
 		{
 			mutatedInfo.robots1 -= 50 * sign;
 			mutatedInfo.robots1Collect += 50 * sign;
+			mutatedInfo.electricity -= 50 * sign;
+
 		}
 		else if (type == 2)
 		{
 			mutatedInfo.robots2 -= 50 * sign;
 			mutatedInfo.robots2Collect += 50 * sign;
+			mutatedInfo.electricity -= 50 * sign;
 		}
 		else
 		{
 			mutatedInfo.robots3 -= 50 * sign;
 			mutatedInfo.robots3Collect += 50 * sign;
+			mutatedInfo.electricity -= 50 * sign;
 		}
 			
 		PostUpdate();
@@ -107,6 +116,8 @@ public class ModelUpdateManager : MonoBehaviour {
 		{
 			mutatedInfo.robots1 -= 50 * sign;
 			mutatedInfo.robots1Expand += 50 * sign;
+			mutatedInfo.electricity -= 50 * sign;
+
 		}
 		PostUpdate ();
 	}
@@ -126,11 +137,15 @@ public class ModelUpdateManager : MonoBehaviour {
 		{
 			mutatedInfo.robots1 -= 50 * sign;
 			mutatedInfo.robots1Fortify += 50 * sign;
+			mutatedInfo.electricity -= 50 * sign;
+
 		}
 		else if (type == 2)
 		{
 			mutatedInfo.robots2 -= 50 * sign;
 			mutatedInfo.robots2Fortify += 50 * sign;
+			mutatedInfo.electricity -= 50 * sign;
+
 		}
 		PostUpdate ();
 	}
