@@ -23,10 +23,16 @@ public class Model : UnityEngine.MonoBehaviour {
 	public int fortificationLevel=0;
 
 	// upgrade levels
-	public float expandChance=50;
+	public float expandChance=75;
 	public int improvedExpand=0;
 	public int improvedCollect=0;
 	public int improvedUpkeep=0;
+	public int armor=0;
+	public int weapons=0;
+	public int firewall=0;
+	public int derricks=0;
+	public int mines=0;
+	public int production=0;
 
 	//allocation vars
 	public int robots1Collect=0;
