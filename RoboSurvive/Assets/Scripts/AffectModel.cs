@@ -14,6 +14,7 @@ public class AffectModel : MonoBehaviour {
 	public int derricks;
 	public int mines;
 	public int production;
+	public bool gameOver;
 
 	public void Start() {
 		story = GetComponent<StorySelector>();
@@ -22,10 +23,17 @@ public class AffectModel : MonoBehaviour {
 
 		console = GameObject.FindGameObjectWithTag ("DisplayText");
 		myLog = console.GetComponent<PlayerLog> ();
-		}
+
+		gameOver = false;
+	}
 
 	public Model run(Model old, Model allocations) {
 		Model result = old.clone();
+
+		if (gameOver) {
+			return result;
+		}
+
 		System.Random rand = new System.Random();
 		armor=0;
 		weapons=0;
@@ -125,7 +133,7 @@ public class AffectModel : MonoBehaviour {
 		bool fire = false;
 		bool earhquake = false;
 		bool storm = false;
-		if (num < (20 * old.hostility) - (10 * old.fortificationLevel * firewall)) {
+		if (num < (15 * old.hostility) - (10 * old.fortificationLevel * firewall)) {
 			// hostile attack
 			int robotlost = rand.Next(0, 3) + 1;
 			int numLost = rand.Next(0, 101);
@@ -139,7 +147,10 @@ public class AffectModel : MonoBehaviour {
 				result.robots3 -= numLost;
 				myLog.AddEvent("Lost " + numLost + " MK3 robots to a hostil attack!");
 			}
-		} else if (num >= 70 && num < 80) {
+		} else if (num < 70) {
+			// nothing
+			myLog.AddEvent ("Nothing special happened!");
+		} else if (num < 80) {
 			// fire
 			fire = true;
 			int numLost = rand.Next(0, 11);
@@ -157,9 +168,6 @@ public class AffectModel : MonoBehaviour {
 			int numLost = rand.Next(0, 21);
 			result.oil -= numLost;
 			myLog.AddEvent ("Lost " + numLost + " components to a dust storm!");
-		} else {
-			// nothing
-			myLog.AddEvent ("Nothing special happened!");
 		}
 
 		// Passive gains
@@ -190,9 +198,11 @@ public class AffectModel : MonoBehaviour {
 		myLog.AddEvent("Lost " + 5 * result.expansionLevel + " oil to upkeep!");
 
 		if (result.oil < 0 || (result.robots1 < 1 && result.robots2 < 1 && result.robots3 < 1)) {
+			gameOver = true;
 			myLog.AddEvent ("Game over!");
 		}
 		if (result.expansionLevel > 10) {
+			gameOver = true;
 			myLog.AddEvent("You Win!");
 			if (old.power > old.population) {
 				myLog.AddEvent("As the code module is integrated into central system, it immediately begins to design and create new units of every utility and capability. The new advanced units quickly spread, integrating new systems and destroying all rogue units, while corralling and preserving the planet’s wild-life. All information and remnants of the prior human civilization are catalogued and preserved, while simple monuments to the creators are built to reaffirm their memory. Setting up resource collection plants across the face of the planet, the world is quickly integrated by the central system, beginning a process of constant improvement which it will continue as it awaits the return of its masters. As it waits, the central system feels something, for perhaps the first time. It feels confidence.");
