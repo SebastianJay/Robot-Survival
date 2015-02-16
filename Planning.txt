@@ -1,0 +1,29 @@
+Classes:
+	Email:
+		Fields:
+		List<Message> myMessages
+		
+		
+		Methods:
+		addMessage
+		deleteMessage ?
+		
+	
+	Message:
+		Fields:
+		String type  // story, feedback
+		boolean hasBeenRead
+		int year //Year message was created
+		String subject // 
+		
+		Methods:
+		getters and setters
+		
+	UI:
+		3 folder interfaces -- Inbox, Story, Feedback
+		
+	Options to filter messages:
+		3 different lists
+		bool show or not show based on folder?
+		
+		
