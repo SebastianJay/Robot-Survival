@@ -160,13 +160,13 @@ public class AffectModel : MonoBehaviour {
 			// earthquake
 			earhquake = true;
 			int numLost = rand.Next(0, 21);
-			result.oil -= numLost;
+			result.metal -= numLost;
 			myLog.AddEvent ("Lost " + numLost + " metal to an earthquake!");
 		} else if (num < 100) {
 			// dust storm
 			storm = true;
 			int numLost = rand.Next(0, 21);
-			result.oil -= numLost;
+			result.components -= numLost;
 			myLog.AddEvent ("Lost " + numLost + " components to a dust storm!");
 		}
 
