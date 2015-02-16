@@ -15,7 +15,7 @@ Classes:
 		boolean hasBeenRead
 		int year //Year message was created
 		String subject // 
-		
+		String msg // the message text
 		Methods:
 		getters and setters
 		
