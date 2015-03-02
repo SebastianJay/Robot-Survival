@@ -7,15 +7,14 @@ public class MetaModel : Observable {
 	public int storyPath;
 
 
-	// Use this for initialization
+	// Initializes
 	new public void Start () {
 		base.Start ();
 		this.year = 2045;
 		this.storyPath = 0;
-
-
 	}
 
+	// Returns copy of this model
 	public MetaModel Clone() {
 		MetaModel m = new MetaModel ();
 		m.SetYear (year);
@@ -23,25 +22,20 @@ public class MetaModel : Observable {
 
 		return m;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+	// Getters and Setters
 
 	public int GetYear() {
 		return this.year;
 	}
-
-	public int GetStoryPath {
-		return this.storyPath;
-	}
-
 	public void SetYear(float value) {
 		year = (int)value;
 		NotifyAll ("year", (int)value);
 	}
 
+	public int GetStoryPath() {
+		return this.storyPath;
+	}
 	public void SetStoryPath(float value) {
 		storyPath = (int)value;
 		NotifyAll ("storyPath", (int)value);
