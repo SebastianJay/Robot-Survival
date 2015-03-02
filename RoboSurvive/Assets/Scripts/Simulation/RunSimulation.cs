@@ -5,8 +5,13 @@ using System.Collections;
 public class RunSimulation : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
-	
+    void Start()
+    {
+        // Copies preturn model for afterturn
+        Transform preTurn = transform.Find("PreTurn");
+        Transform afterTurn = (Transform)Instantiate(preTurn);
+        afterTurn.parent = transform;
+        afterTurn.name = "AfterTurn";
 	}
 	
 	// Update is called once per frame
