@@ -1,9 +1,12 @@
-
 using UnityEngine;
 using System.Collections;
 
 public class RobotModel : Observable {
-	
+
+	private float mk1LastVal;
+	private float mk2LastVal;
+	private float mk3LastVal;
+
 	public int markOne;
 	public int markTwo;
 	public int markThree;
@@ -11,10 +14,10 @@ public class RobotModel : Observable {
 	// Initializes
 	new public void Start() {
 		base.Start();
-		this.markOne = 0;
-		this.markTwo = 0;
-		this.markThree = 0;
-
+		this.mk1LastVal = 0;
+		this.SetMarkOne(1000);
+		this.SetMarkTwo(0);
+		this.SetMarkThree(0);
 	}
 	
 	// Returns copy of this model
@@ -25,31 +28,54 @@ public class RobotModel : Observable {
 		m.SetMarkThree(markThree);
 		return m;
 	}
+
+	// Methods for allocating robots
+
+	public void AllocateMarkOne(float value) {
+		markOne = markOne + (int)(mk1LastVal - value);
+		NotifyAll("mk1", markOne);
+		NotifyAll("mk1_alloc", (int)value);
+		mk1LastVal = value;
+	}
+
+	public void AllocateMarkTwo(float value) {
+		markOne = markTwo + (int)(mk2LastVal - value);
+		NotifyAll("mk2", markTwo);
+		NotifyAll("mk2_alloc", (int)value);
+		mk2LastVal = value;
+	}
+
+	public void AllocateMarkThree(float value) {
+		markOne = markOne + (int)(mk3LastVal - value);
+		NotifyAll("mk3", markThree);
+		NotifyAll("mk3_alloc", (int)value);
+		mk3LastVal = value;
+	}
 	
 	// Getters and Setters
 	
 	public int GetMarkOne() {
 		return this.markOne;
 	}
-	public void SetMarkOne(float value) {
-		markOne = (int)value;
-		NotifyAll("mk1", (int)value);
+	public void SetMarkOne(int value) {
+		markOne = value;
+		NotifyAll("mk1", value);
 	}
 	
 	public int GetMarkTwo() {
 		return this.markTwo;
 	}
-	public void SetMarkTwo(float value) {
-		markTwo = (int)value;
-		NotifyAll("mk2", (int)value);
+	public void SetMarkTwo(int value) {
+		markTwo = value;
+		NotifyAll("mk2", value);
 	}
 	
 	public int GetMarkThree() {
 		return this.markThree;
 	}
-	public void SetMarkThree(float value) {
-		markThree = (int)value;
-		NotifyAll("mk3", (int)value);
+	public void SetMarkThree(int value) {
+		markThree = value;
+		NotifyAll("mk3", value);
 	}
 
 }
