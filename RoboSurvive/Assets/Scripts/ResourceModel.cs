@@ -27,14 +27,35 @@ public class ResourceModel : Observable {
 		return m;
 	}
 
+	// Methods for allocating resources
+
+	public void AllocateOil(int value) {
+		oil = oil - value;
+		NotifyAll("oil", value);
+	}
+	public void AllocateMetal(int value) {
+		metal = metal - value;
+		NotifyAll("metal", value);
+	}
+
+	public void AllocateComponents(int value) {
+		components = components - value;
+		NotifyAll("components", value);
+	}
+
+	public void AllocateElectricity(int value) {
+		electricity = electricity - value;
+		NotifyAll("electricity", value);
+	}
+	
 	// Getters and Setters
 
 	public int GetOil() {
 		return this.oil;
 	}
-	public void SetOil(float value) {
-		oil = (int)value;
-		NotifyAll("oil", (int)value);
+	public void SetOil(int value) {
+		oil = value;
+		NotifyAll("oil", value);
 	}
 
 	public int GetMetal() {
