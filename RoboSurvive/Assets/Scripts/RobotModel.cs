@@ -39,14 +39,14 @@ public class RobotModel : Observable {
 	}
 
 	public void AllocateMarkTwo(float value) {
-		markOne = markTwo + (int)(mk2LastVal - value);
+		markTwo = markTwo + (int)(mk2LastVal - value);
 		NotifyAll("mk2", markTwo);
 		NotifyAll("mk2_alloc", (int)value);
 		mk2LastVal = value;
 	}
 
 	public void AllocateMarkThree(float value) {
-		markOne = markOne + (int)(mk3LastVal - value);
+		markThree = markOne + (int)(mk3LastVal - value);
 		NotifyAll("mk3", markThree);
 		NotifyAll("mk3_alloc", (int)value);
 		mk3LastVal = value;

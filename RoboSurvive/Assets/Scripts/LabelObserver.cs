@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SliderObserver : Observer {
+public class LabelObserver : Observer {
 
-	public UnityEngine.UI.Slider slider;
-	
+	public UnityEngine.UI.Text label;
+
 	public override void Start() {
+		label.text = "0";
 	}
-	
+
 	// Updates states when subject changes
 	public override void Notify(string field, int val) {
-		if (slider.tag.Equals(field)) {
-			slider.maxValue = slider.value + val;
+		if (label.tag.Equals(field)) {
+			label.text = val.ToString ();
 		}
 	}
 }
