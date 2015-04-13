@@ -10,6 +10,7 @@ public class DevelopmentsModel : Observable {
 	// Use this for initialization
 	new public void Start () {
 		undeveloped = new List<string>();
+		undeveloped.Add("Hello!");
 		developed = new List<string>();
 	}
 
