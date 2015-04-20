@@ -11,6 +11,7 @@ public class DevelopmentsModel : Observable {
 	new public void Start () {
 		undeveloped = new List<string>();
 		undeveloped.Add("Hello!");
+		undeveloped.Add("Bye!");
 		developed = new List<string>();
 	}
 

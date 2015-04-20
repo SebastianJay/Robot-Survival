@@ -19,7 +19,10 @@ public class ButtonList : MonoBehaviour {
 			Button button = Instantiate (theButton) as Button;
 			button.transform.SetParent(contentPanel);	
 			button.gameObject.SetActive(true);
-			button.transform.GetComponentInChildren<Text>().text = dev;
+			foreach (Text text in button.transform.GetComponentsInChildren<Text>()) {
+				text.text = dev;
+			}
+			button.transform.position = new Vector3(550, 250 - 50 * devs.GetUndeveloped().IndexOf(dev), 1);
 		}
 	}
 }
