@@ -12,6 +12,7 @@ public class RunSimulation : MonoBehaviour {
         Transform afterTurn = (Transform)Instantiate(preTurn);
         afterTurn.parent = transform;
         afterTurn.name = "AfterTurn";
+        afterTurn.tag = "AfterTurn";
 	}
 	
 	// Update is called once per frame
@@ -43,10 +44,12 @@ public class RunSimulation : MonoBehaviour {
         // Sets result to be new preturn
         preTurn = result;
         preTurn.name = "PreTurn";
+        preTurn.tag = "PreTurn";
 
         // Copies preturn model for afterturn
         afterTurn = (Transform)Instantiate(preTurn);
         afterTurn.parent = transform;
         afterTurn.name = "AfterTurn";
+        afterTurn.tag = "AfterTurn";
     }
 }
