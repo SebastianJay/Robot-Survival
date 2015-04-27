@@ -6,7 +6,7 @@ public class ButtonList : MonoBehaviour {
 
 	public DevelopmentsModel devs;
 	public Transform contentPanel;
-	public Button theButton;
+	public Transform theButton;
 
 	// Use this for initialization
 	void Start () {
@@ -16,13 +16,16 @@ public class ButtonList : MonoBehaviour {
 	// Populates list of buttons
 	void PopulateList () {
 		foreach (string dev in devs.GetUndeveloped()) {
-			Button button = Instantiate (theButton) as Button;
-			button.transform.SetParent(contentPanel);	
+			Transform button = Instantiate (theButton) as Transform;
+			button.SetParent(contentPanel);	
 			button.gameObject.SetActive(true);
 			foreach (Text text in button.transform.GetComponentsInChildren<Text>()) {
-				text.text = dev;
+				if (!text.text.Equals("Develop")) {
+					text.text = dev;
+				}
 			}
-			button.transform.position = new Vector3(550, 250 - 50 * devs.GetUndeveloped().IndexOf(dev), 1);
+			Vector3 pos = contentPanel.position;
+			button.position = pos + new Vector3(-150, -50 - 50 * devs.GetUndeveloped().IndexOf(dev), 1);
 		}
 	}
 }
