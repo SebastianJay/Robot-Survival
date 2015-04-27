@@ -39,6 +39,9 @@ public class PopulateTasks : MonoBehaviour {
             Task newTask = b.gameObject.AddComponent<Task>();
             newTask.name = task.name;
             newTask.desc = task.desc;
+            newTask.mk1 = task.mk1;
+            newTask.mk2 = task.mk2;
+            newTask.mk3 = task.mk3;
 
             TaskDisplay td = b.GetComponent<TaskDisplay>();
             td.detail = detail;
