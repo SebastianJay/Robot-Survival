@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -9,10 +10,6 @@ public class DevelopmentsModel : Observable {
 
 	// Use this for initialization
 	new public void Start () {
-		undeveloped = new List<string>();
-		undeveloped.Add("Hello!");
-		undeveloped.Add("Bye!");
-		developed = new List<string>();
 	}
 
 	public DevelopmentsModel Clone() {
@@ -22,13 +19,12 @@ public class DevelopmentsModel : Observable {
 		return m;
 	}
 
-	public bool Develop(string development) {
+	public void Develop(GameObject dev) {
+		string development = dev.GetComponent<Text>().text;
 		if (undeveloped.Contains(development)) {
 			developed.Add(development);
 			undeveloped.Remove(development);
-			return true;
 		}
-		return false;
 	}
 
 	public List<string> GetUndeveloped() {

@@ -16,6 +16,8 @@ public class ButtonList : MonoBehaviour {
 	
 	// Populates list of buttons
 	void PopulateList () {
+		contentPanel.transform.localScale = new Vector3 (1, devs.GetUndeveloped ().Count, 1);
+		contentPanel.transform.position = new Vector3 (0, 0, 0);
 		foreach (string dev in devs.GetUndeveloped()) {
 			Transform button = Instantiate (theButton) as Transform;
 			button.SetParent(contentPanel);	
@@ -26,7 +28,7 @@ public class ButtonList : MonoBehaviour {
 				}
 			}
 			Vector3 pos = posPanel.position;
-			button.position = pos + new Vector3(-150, -50 - 50 * devs.GetUndeveloped().IndexOf(dev), 1);
+			button.position = pos + new Vector3(-150, -175 - 50 * devs.GetUndeveloped().IndexOf(dev), 1);
 		}
 	}
 }
