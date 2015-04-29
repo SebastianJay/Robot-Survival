@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ResourceModel : Observable {
 
+	public GameObject m;
+
 	public int oil;
 	public int metal;
 	public int components;
