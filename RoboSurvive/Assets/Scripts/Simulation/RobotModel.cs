@@ -3,6 +3,8 @@ using System.Collections;
 
 public class RobotModel : Observable {
 
+	public GameObject m;
+
 	private float mk1LastVal;
 	private float mk2LastVal;
 	private float mk3LastVal;
