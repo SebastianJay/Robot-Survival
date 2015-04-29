@@ -22,5 +22,9 @@ public class DetailDisplay : MonoBehaviour {
         nameField.text = t.name;
         descField.text = t.desc;
 
+        var updates = GetComponentsInChildren<SliderLabelUpdate>();
+        foreach(var u in updates) {
+            u.SetTask(t);
+        }
     }
 }

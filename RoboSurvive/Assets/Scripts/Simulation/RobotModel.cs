@@ -1,25 +1,23 @@
 using UnityEngine;
 using System.Collections;
 
-public class RobotModel : Observable {
+public class RobotModel : Observable
+{
 
-	public GameObject m;
+    public int markOneAlloc;
+    public int markTwoAlloc;
+    public int markThreeAlloc;
 
-	private float mk1LastVal;
-	private float mk2LastVal;
-	private float mk3LastVal;
-
-	public int markOne;
-	public int markTwo;
-	public int markThree;
+    public int markOne;
+    public int markTwo;
+    public int markThree;
 	
 	// Initializes
 	new public void Start() {
 		base.Start();
-		this.mk1LastVal = 0;
-		this.SetMarkOne(1000);
-		this.SetMarkTwo(0);
-		this.SetMarkThree(0);
+        NotifyAll("mk1", markOne);
+        NotifyAll("mk2", markTwo);
+        NotifyAll("mk3", markThree);
 	}
 	
 	// Returns copy of this model
@@ -33,25 +31,24 @@ public class RobotModel : Observable {
 
 	// Methods for allocating robots
 
-	public void AllocateMarkOne(float value) {
-		markOne = markOne + (int)(mk1LastVal - value);
-		NotifyAll("mk1", markOne);
-		NotifyAll("mk1_alloc", (int)value);
-		mk1LastVal = value;
+	public void AllocateMarkOne(int value) {
+        markOneAlloc += value;
+		NotifyAll("mk1", markOne - markOneAlloc);
+		NotifyAll("mk1_alloc", value);
 	}
 
-	public void AllocateMarkTwo(float value) {
-		markTwo = markTwo + (int)(mk2LastVal - value);
-		NotifyAll("mk2", markTwo);
-		NotifyAll("mk2_alloc", (int)value);
-		mk2LastVal = value;
+    public void AllocateMarkTwo(int value)
+    {
+        markTwoAlloc += value;
+        NotifyAll("mk2", markTwo - markTwoAlloc);
+        NotifyAll("mk2_alloc", value);
 	}
 
-	public void AllocateMarkThree(float value) {
-		markThree = markOne + (int)(mk3LastVal - value);
-		NotifyAll("mk3", markThree);
-		NotifyAll("mk3_alloc", (int)value);
-		mk3LastVal = value;
+    public void AllocateMarkThree(int value)
+    {
+        markThreeAlloc += value;
+        NotifyAll("mk3", markThree - markThreeAlloc);
+        NotifyAll("mk3_alloc", value);
 	}
 	
 	// Getters and Setters
