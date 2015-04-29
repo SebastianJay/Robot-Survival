@@ -15,8 +15,8 @@ public class Develop : SimScript {
 	
 	}
 
-	public void RunSimulation(Transform preTurn, Transform afterTurn, Transform result) {
-		Task tasks = afterTurn.GetComponents<Task> ();
+	public override void RunSimulation(Transform preTurn, Transform afterTurn, Transform result) {
+		Task[] tasks = afterTurn.GetComponents<Task> ();
 		List<Task> devs = new List<Task>();
 		foreach (Task task in tasks) {
 			if (task.type == "develop") {

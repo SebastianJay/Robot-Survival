@@ -16,8 +16,8 @@ public class Fortify : SimScript {
 	
 	}
 
-	public void RunSimulation(Transform preTurn, Transform afterTurn, Transform result) {
-		Task tasks = afterTurn.GetComponents<Task> ();
+	public override void RunSimulation(Transform preTurn, Transform afterTurn, Transform result) {
+		Task[] tasks = afterTurn.GetComponents<Task> ();
 		List<Task> forts = new List<Task>();
 		foreach (Task task in tasks) {
 			if (task.type == "fortify") {

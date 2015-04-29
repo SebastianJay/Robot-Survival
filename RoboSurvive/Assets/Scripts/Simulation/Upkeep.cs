@@ -17,14 +17,14 @@ public class Upkeep : SimScript {
 		
 	}
 	
-	public void RunSimulation(Transform preTurn, Transform afterTurn, Transform result) {
+	public override void RunSimulation(Transform preTurn, Transform afterTurn, Transform result) {
 		RobotModel rM = afterTurn.GetComponent<RobotModel> ();
 		int totMk1 = rM.GetMarkOne ();
 		int totMk2 = rM.GetMarkTwo ();
 		int totMk3 = rM.GetMarkThree ();
 		
 		int oldOil = afterTurn.GetComponent<ResourceModel> ().GetOil ();
-		int newOil = oldOil - (oilUsedMk1 * totMk1 + oilUsedMk2 * totMk2 + oilUsedMk3 * totMk3);
+		int newOil = oldOil - (int)(oilUsedMk1 * totMk1 + oilUsedMk2 * totMk2 + oilUsedMk3 * totMk3);
 		
 		result.GetComponent<ResourceModel> ().SetOil (newOil);
 	}
