@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class MetaModel : Observable {
 
 	public int year;
 	public int storyPath, freedom;
 	public float fortification;
+
+	public List<string> messages;
 
 
 	// Initializes

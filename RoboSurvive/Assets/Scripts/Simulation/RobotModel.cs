@@ -10,6 +10,9 @@ public class RobotModel : Observable
     public int markTwoAlloc;
     public int markThreeAlloc;
 
+	public GameObject m;
+
+
     public int markOne;
     public int markTwo;
     public int markThree;
