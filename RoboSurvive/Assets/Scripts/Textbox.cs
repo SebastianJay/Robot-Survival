@@ -7,69 +7,69 @@ public class Textbox : MonoBehaviour {
 
 	//window0
 	//Skip tutorial button
-	public Rect startUpRect;
+	public Rect startUpRect = new Rect (335,230,200,200);
 	public string startUpString = "This tutorial will guide you through the functions of your systems.";
 
 	//window1
-	public Rect robotRect;
+	public Rect robotRect = new Rect (490,130,200,230);
 	public string robotString = "This is the number of robots currently functioning. Robots are the tools by which " +
 		"you will perform any and all tasks. Though you start with a relatively low number of Mk I's, you will be " +
 		"able to degrade these into a higher quantity of lower-tier robots. Be warned that once lost, you will never " +
 		"be able to regain your Mk I's. ";
 
-	public Rect robotBRect;
+	public Rect robotBRect = new Rect (490,130,200,230);
 	public string robotBString = "There are three classes of robots. " +
 		"Top-Tier: Mk I - high maintenance, high efficiency; able to perform all tasks " +
 		"Mid-Tier: Mk II - medium maintenance, medium efficiency; high level tasks locked " +
 		"Bottom-Tier: Mk III - low maintenance, low efficiency; only able to perform base functions ";
 
 	//window2
-	public Rect materialsRect;
+	public Rect materialsRect = new Rect (490,290,200,230);
 	public string materialsString = "These are the materials which you will manage. Components are used for developing the " +
 		"systems your currently have. " +
 		"Metal is used for the conversion process as well as building developments. " +
 		"Oil is used every turn to replenish your energy. If you run out of oil, you will be forced to terminate.";
 
 	//window3
-	public Rect tabsRect;
+	public Rect tabsRect = new Rect (325,45,250,110);
 	public string tabsString = "The tabs above will allow you to switch between the various screens in order to plan " +
 		"our your turn.";
 
 	//window4
 	//Go into the tab then do window
-	public Rect factoryRect;
+	public Rect factoryRect = new Rect (10,225,200,150);
 	public string factoryString = "This is the factory screen. It will allow you to degrade upper-tier robots to " +
 		"lower-tier robots.";
 
 	//window5
 	//Go to developments
-	public Rect developmentsRect;
+	public Rect developmentsRect = new Rect (10,225,200,150);
 	public string developmentsString = "This is the developments screen. You will manage the development of your various " +
 		"systems.";
 
 	//window6
-	public Rect messagesRect;
+	public Rect messagesRect = new Rect (350,225,200,140);
 	public string messagesString = "This is the messages screen. It will alert you to new tasks and developments, as well " +
 		"as keep a record of previous turns.";
 
 	//window7
-	public Rect tasksRect;
+	public Rect tasksRect = new Rect (350,225,200,125);
 	public string tasksString = "This is the tasks screen. You assign robots to various tasks necessary for " +
 		"survival and expansion.";
 
 	//window8
 	//Go home
-	public Rect energyRect;
+	public Rect energyRect = new Rect (20,370,200,170);
 	public string energyString = "This is the energy which is allotted to you to activate robots. It will replenish " +
 		"each turn at the expense of oil. It, like many other things, can be upgraded in the developments screen.";
 
 	//window9
-	public Rect executeRect;
+	public Rect executeRect = new Rect (325,240,200,95);
 	public string executeString = "This will end your turn and execute all planned functions.";
 
 	//window10
 	//Button - exit tutorial
-	public Rect playRect;
+	public Rect playRect = new Rect (365,250,124,80);
 	public string playString = "Tutorial complete.";
 
 	public string currentMenu = "";
