@@ -3,6 +3,8 @@ using System.Collections;
 
 public class RobotModel : Observable
 {
+	public int OneToTwo;
+	public int TwoToThree;
 
     public int markOneAlloc;
     public int markTwoAlloc;

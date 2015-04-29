@@ -5,6 +5,7 @@ public class MetaModel : Observable {
 
 	public int year;
 	public int storyPath;
+	public float fortification;
 
 
 	// Initializes

@@ -18,9 +18,10 @@ public class Upkeep : SimScript {
 	}
 	
 	public void RunSimulation(Transform preTurn, Transform afterTurn, Transform result) {
-		int totMk1 = afterTurn.GetComponent<RobotModel> ().GetMarkOne ();
-		int totMk2 = afterTurn.GetComponent<RobotModel> ().GetMarkTwo ();
-		int totMk3 = afterTurn.GetComponent<RobotModel> ().GetMarkThree ();
+		RobotModel rM = afterTurn.GetComponent<RobotModel> ();
+		int totMk1 = rM.GetMarkOne ();
+		int totMk2 = rM.GetMarkTwo ();
+		int totMk3 = rM.GetMarkThree ();
 		
 		int oldOil = afterTurn.GetComponent<ResourceModel> ().GetOil ();
 		int newOil = oldOil - (oilUsedMk1 * totMk1 + oilUsedMk2 * totMk2 + oilUsedMk3 * totMk3);
