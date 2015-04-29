@@ -21,8 +21,13 @@ public class DevelopmentsModel : Observable {
 		return m;
 	}
 
-	public void Develop(GameObject dev) {
-		string development = dev.GetComponent<Text>().text;
+	public void AddTask(GameObject button) {
+		Task dev = this.gameObject.AddComponent<Task> ();
+		dev.name = button.GetComponent<Text> ().text;
+		dev.desc = "develop";
+	}
+
+	public void Develop(string development) {
 		if (undeveloped.Contains(development)) {
 			developed.Add(development);
 			undeveloped.Remove(development);
