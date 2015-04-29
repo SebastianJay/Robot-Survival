@@ -28,15 +28,15 @@ public class RandomEvents : SimScript
             float rand = Random.value;
 
             var robo = result.GetComponent<RobotModel>();
-            if (rand < mk1Odds)
+            if (rand < mk1Odds && robo.GetMarkOne() > 0)
             {
                 robo.SetMarkOne(robo.GetMarkOne() - 1);
             }
-            else if (rand < mk1Odds + mk2Odds)
+            else if (rand < mk1Odds + mk2Odds && robo.GetMarkTwo() > 0 )
             {
                 robo.SetMarkTwo(robo.GetMarkTwo() - 1);
             }
-            else
+            else if (robo.GetMarkThree() > 0)
             {
                 robo.SetMarkThree(robo.GetMarkThree() - 1);
             }

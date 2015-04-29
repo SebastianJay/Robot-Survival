@@ -57,6 +57,10 @@ public class Expansion : SimScript
         foreach(Place p in places) {
             if(t.internalName.Equals(p.name)) {
                 float odds = t.mk1 * chancePerMarkOne + t.mk2 * chancePerMarkTwo + t.mk3 * chancePerMarkThree;
+                if (odds == 0)
+                {
+                    break;
+                }
 
                 float threshold = p.difficulty - odds;
 
@@ -92,11 +96,13 @@ public class Expansion : SimScript
                         robo.SetMarkThree(robo.GetMarkThree() + p.mk3);
                     }
 
-                    int newPlaces = Random.Range(0, maxPlaces);
+                    int newPlaces = Random.Range(1, maxPlaces);
                     for (int i = 0; i < newPlaces; i++)
                     {
                         AddNewPlace(result);
                     }
+
+                    break;
                 }
                 else
                 {

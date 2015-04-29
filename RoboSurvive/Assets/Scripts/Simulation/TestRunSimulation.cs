@@ -13,7 +13,7 @@ public class TestRunSimulation : MonoBehaviour {
 	void Update () {
 
         // Runs the simulation on mouse click.
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             this.GetComponent<RunSimulation>().Run();
         }

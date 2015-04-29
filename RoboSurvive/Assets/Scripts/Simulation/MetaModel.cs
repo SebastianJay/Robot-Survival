@@ -9,10 +9,7 @@ public class MetaModel : Observable {
 
 
 	// Initializes
-	new public void Start () {
-		base.Start ();
-		this.year = 2045;
-		this.storyPath = 0;
+	public void Start () {
 	}
 
 	// Returns copy of this model

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public class Meta : SimScript {
 
-	public int oilCost, metalCost, ComponentsCost;
     public SoundMixer mixer;
     public StorySelector sel;
 
@@ -26,17 +25,17 @@ public class Meta : SimScript {
             mixer.PlayStage5();
             sel.AddAct3 = true;
         }
-        if (meta.year >= 2060)
+        else if (meta.year >= 2060)
         {
             mixer.PlayStage4();
         }
-        if (meta.year >= 2055)
+        else if (meta.year >= 2055)
         {
             mixer.PlayStage3();
             sel.AddAct2 = true;
             sel.set = true;
         }
-        if (meta.year >= 2050)
+        else if (meta.year >= 2050)
         {
             mixer.PlayStage2();
         }
@@ -45,7 +44,7 @@ public class Meta : SimScript {
             mixer.PlayStage1();
         }
 
-        if(meta.storyPath > 0 && !sel.set) {
+        if(meta.storyPath >= 0 && !sel.set) {
             sel.Sulphate = true;
         }
 	}
