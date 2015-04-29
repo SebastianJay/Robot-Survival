@@ -52,4 +52,9 @@ public class MetaModel : Observable {
         freedom = (int)value;
         NotifyAll("freedom", (int)value);
     }
+
+    public void AddMessage(string msg)
+    {
+        messages.Add(msg);
+    }
 }
