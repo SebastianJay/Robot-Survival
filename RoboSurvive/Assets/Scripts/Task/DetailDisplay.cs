@@ -24,7 +24,7 @@ public class DetailDisplay : MonoBehaviour {
 
         var updates = GetComponentsInChildren<SliderLabelUpdate>();
         foreach(var u in updates) {
-            u.task = t;
+            u.SetTask(t);
         }
     }
 }
