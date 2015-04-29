@@ -135,6 +135,8 @@ public class Expansion : SimScript
                         AddNewPlace(result);
                     }
 
+                    Destroy(t);
+
                     break;
                 }
                 else
@@ -148,11 +150,18 @@ public class Expansion : SimScript
 
     public override void RunSimulation(Transform preTurn, Transform afterTurn, Transform result)
     {
+        bool none = true;
         foreach(Task t in afterTurn.GetComponents<Task>()) {
             if (t.type.Equals("expand"))
             {
                 Expand(t, result);
+                none = false;
             }
+        }
+
+        if (none)
+        {
+            AddNewPlace(result);
         }
     }
 }

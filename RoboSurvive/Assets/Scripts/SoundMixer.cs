@@ -17,6 +17,7 @@ public class SoundMixer : MonoBehaviour {
         res = (AudioSource)layers[6];
         task = (AudioSource)layers[7];
 
+        PlayStage1();
 	}
 
     private void On(AudioSource layer)
