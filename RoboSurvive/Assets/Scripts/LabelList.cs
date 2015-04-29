@@ -2,13 +2,13 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class ButtonList : MonoBehaviour {
-
+public class LabelList : MonoBehaviour {
+	
 	public DevelopmentsModel devs;
 	public Transform contentPanel;
 	public Transform posPanel;
 	public Transform theButton;
-
+	
 	// Use this for initialization
 	void Start () {
 		this.PopulateList ();
@@ -16,9 +16,9 @@ public class ButtonList : MonoBehaviour {
 	
 	// Populates list of buttons
 	void PopulateList () {
-		contentPanel.transform.localScale = new Vector3 (1, devs.GetUndeveloped ().Count, 1);
+		contentPanel.transform.localScale = new Vector3 (1, devs.GetDeveloped ().Count, 1);
 		contentPanel.transform.position = new Vector3 (0, 0, 0);
-		foreach (string dev in devs.GetUndeveloped()) {
+		foreach (string dev in devs.GetDeveloped()) {
 			Transform button = Instantiate (theButton) as Transform;
 			button.SetParent(contentPanel);	
 			button.gameObject.SetActive(true);
@@ -27,8 +27,8 @@ public class ButtonList : MonoBehaviour {
 					text.text = dev;
 				}
 			}
-			Vector3 pos = posPanel.position;
-			button.position = pos + new Vector3(100, -175 -50 * devs.GetUndeveloped().IndexOf(dev), 1);
+			Vector3 pos = contentPanel.position;
+			button.position = pos + new Vector3(510, - 50 * devs.GetDeveloped().IndexOf(dev), 1);
 		}
 	}
 }

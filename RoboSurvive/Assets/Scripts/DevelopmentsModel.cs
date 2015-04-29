@@ -34,7 +34,7 @@ public class DevelopmentsModel : Observable {
 		this.undeveloped = undeveloped;
 	}
 
-	public List<string> getDeveloped() {
+	public List<string> GetDeveloped() {
 		return developed;
 	}
 	public void SetDeveloped(List<string> developed) {
