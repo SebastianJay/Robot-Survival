@@ -14,18 +14,9 @@ public class PopulateTasks : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            OnEnter();
-        }
 	}
 
-    void OnEnter()
-    {
-        Populate(GameObject.FindGameObjectWithTag("AfterTurn").GetComponents<Task>());
-    }
-
-    void Populate(Task[] tasks)
+    public void Populate(Task[] tasks)
     {
         int x = 0;
         int y = 93;

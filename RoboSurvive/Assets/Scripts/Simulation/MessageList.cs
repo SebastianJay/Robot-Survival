@@ -4,19 +4,16 @@ using System.Collections;
 
 public class MessageList : MonoBehaviour {
 	
-	public MetaModel meta;
 	public Transform contentPanel;
 	public Transform posPanel;
 	public Transform theButton;
-	
+    public int lastY;
 	// Use this for initialization
 	void Start () {
-		this.PopulateList ();
 	}
 	
 	// Populates list of buttons
-	void PopulateList () {
-		int lastY = 175;
+	public void PopulateList (MetaModel meta) {
 		int wrap = 1;
 		foreach (string dev in meta.messages) {
 			Transform button = Instantiate (theButton) as Transform;
@@ -28,7 +25,7 @@ public class MessageList : MonoBehaviour {
 				}
 			}
 			Vector3 pos = posPanel.position;
-			button.position = pos + new Vector3(50, lastY - 30 * wrap, 1);
+			button.position = pos + new Vector3(130, lastY - 30 * wrap, 1);
 			lastY -= 30 * wrap;
 			wrap = dev.Length/30 + 1;
 		}

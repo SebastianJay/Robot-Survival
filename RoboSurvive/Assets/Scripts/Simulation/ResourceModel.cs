@@ -12,11 +12,10 @@ public class ResourceModel : Observable {
 
 	// Initializes
 	new public void Start() {
-		base.Start();
-		this.oil = 0;
-		this.metal = 0;
-		this.components = 0;
-		this.electricity = 0;
+        base.Start();
+        NotifyAll("Oil", oil);
+        NotifyAll("Metal", metal);
+        NotifyAll("Component", components);
 	}
 
 	// Returns copy of this model
@@ -33,16 +32,16 @@ public class ResourceModel : Observable {
 
 	public void AllocateOil(int value) {
 		oil = oil - value;
-		NotifyAll("oil", value);
+		NotifyAll("Oil", value);
 	}
 	public void AllocateMetal(int value) {
 		metal = metal - value;
-		NotifyAll("metal", value);
+		NotifyAll("Metal", value);
 	}
 
 	public void AllocateComponents(int value) {
 		components = components - value;
-		NotifyAll("components", value);
+		NotifyAll("Component", value);
 	}
 
 	public void AllocateElectricity(int value) {

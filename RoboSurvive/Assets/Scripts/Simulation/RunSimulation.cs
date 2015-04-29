@@ -4,6 +4,9 @@ using System.Collections;
 // The main class of the simulation.
 public class RunSimulation : MonoBehaviour {
 
+    public PopulateTasks pop;
+    public MessageList list;
+
 	// Use this for initialization
     void Start()
     {
@@ -51,5 +54,9 @@ public class RunSimulation : MonoBehaviour {
         afterTurn.parent = transform;
         afterTurn.name = "AfterTurn";
         afterTurn.tag = "AfterTurn";
+
+        afterTurn.GetComponent<MetaModel>().AddMessage("Simulation Finished");
+        pop.Populate(afterTurn.GetComponents<Task>());
+        list.PopulateList(afterTurn.GetComponent<MetaModel>());
     }
 }
