@@ -28,7 +28,7 @@ public class ButtonList : MonoBehaviour {
 				}
 			}
 			Vector3 pos = new Vector3(0, 0, 0);
-			button.position = pos + new Vector3(150, 50 -50 * devs.GetUndeveloped().IndexOf(dev), 1);
+			button.position = pos + new Vector3(450, 25 -50 * devs.GetUndeveloped().IndexOf(dev), 1);
 		}
 	}
 }
