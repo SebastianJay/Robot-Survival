@@ -3,7 +3,7 @@ using System.Collections;
 
 public class StorySelector : MonoBehaviour {
 
-    public bool Sulphate, AddAct2, AddAct3;
+    public bool Sulphate, AddAct2, AddAct3, set;
 
     private ArrayList climate;
     private ArrayList sulphate1;
