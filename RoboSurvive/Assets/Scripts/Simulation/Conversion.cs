@@ -18,10 +18,10 @@ public class Conversion : SimScript {
 
 	public override void RunSimulation(Transform preTurn, Transform afterTurn, Transform result) {
 		int Mk1Used = afterTurn.GetComponent<RobotModel> ().OneToTwo;
-		int MK2Created = (int) (Mk1Used * OneToTwoRate);
+		int MK2Created = (int)(Mk1Used * OneToTwoRate);
 
 		int Mk2Used = afterTurn.GetComponent<RobotModel> ().TwoToThree;
-		int Mk3Created = (int) (Mk2Used * TwoToThreeRate);
+		int Mk3Created = (int)(Mk2Used * TwoToThreeRate);
 
 		RobotModel rM = result.GetComponent<RobotModel> ();
 		rM.SetMarkOne (rM.GetMarkOne () - Mk1Used);
