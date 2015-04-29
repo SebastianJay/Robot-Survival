@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class DevelopmentsModel : Observable {
 
+	public GameObject m;
+
 	public List<string> undeveloped;
 	public List<string> developed;
 
