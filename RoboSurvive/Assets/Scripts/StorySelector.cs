@@ -16,9 +16,9 @@ public class StorySelector : MonoBehaviour {
     private void Load()
     {
         int numClimate = 6;
-        int numSulphate1 = 6;
+        int numSulphate1 = 11;
         int numSulphate2 = 3;
-        int numNuke1 = 6;
+        int numNuke1 = 10;
         int numNuke2 = 3;
 
         climate = new ArrayList();
