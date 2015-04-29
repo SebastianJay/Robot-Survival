@@ -4,7 +4,7 @@ using System.Collections;
 public class MetaModel : Observable {
 
 	public int year;
-	public int storyPath;
+	public int storyPath, freedom;
 	public float fortification;
 
 
@@ -32,13 +32,25 @@ public class MetaModel : Observable {
 	public void SetYear(float value) {
 		year = (int)value;
 		NotifyAll ("year", (int)value);
-	}
+    }
 
-	public int GetStoryPath() {
-		return this.storyPath;
-	}
-	public void SetStoryPath(float value) {
-		storyPath = (int)value;
-		NotifyAll ("storyPath", (int)value);
-	}
+    public int GetStoryPath()
+    {
+        return this.storyPath;
+    }
+    public void SetStoryPath(float value)
+    {
+        storyPath = (int)value;
+        NotifyAll("storyPath", (int)value);
+    }
+
+    public int GetFreedom()
+    {
+        return this.freedom;
+    }
+    public void SetFreedom(float value) 
+    {
+        freedom = (int)value;
+        NotifyAll("freedom", (int)value);
+    }
 }
