@@ -27,8 +27,8 @@ public class LabelList : MonoBehaviour {
 					text.text = dev;
 				}
 			}
-			Vector3 pos = contentPanel.position;
-			button.position = pos + new Vector3(510, - 50 * devs.GetDeveloped().IndexOf(dev), 1);
+			Vector3 pos = posPanel.position;
+			button.position = pos + new Vector3(100, -325 - 50 * devs.GetDeveloped().IndexOf(dev), 1);
 		}
 	}
 }
